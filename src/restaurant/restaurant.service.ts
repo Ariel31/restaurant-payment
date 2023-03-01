@@ -4,23 +4,26 @@ import { UpdateRestaurantDto } from './dto/update-restaurant.dto';
 
 @Injectable()
 export class RestaurantService {
+
+  constructor() {}
+
   create(createRestaurantDto: CreateRestaurantDto) {
     return 'This action adds a new restaurant';
   }
 
-  findAll() {
-    return `This action returns all restaurant`;
-  }
-
-  findOne(id: number) {
+  findOne(id: string) {
     return `This action returns a #${id} restaurant`;
   }
 
-  update(id: number, updateRestaurantDto: UpdateRestaurantDto) {
+  getMenu(id: string) {
+    return;
+  }
+
+  update(id: string, updateRestaurantDto: UpdateRestaurantDto) {
     return `This action updates a #${id} restaurant`;
   }
 
-  remove(id: number) {
+  remove(id: string) {
     return `This action removes a #${id} restaurant`;
   }
 }

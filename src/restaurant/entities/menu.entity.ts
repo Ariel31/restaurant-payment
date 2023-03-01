@@ -1,21 +1,22 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
+import { MenuItemCategories } from '../enums/menu-item-categories.enum';
 
 export type MenuDocument = HydratedDocument<MenuItem>;
 
 @Schema()
 export class MenuItem {
-  @Prop()
+  @Prop({ required: true })
   name: string;
 
-  @Prop()
+  @Prop({ required: true })
   price: number;
 
   @Prop()
   about: string;
 
-  @Prop()
-  category: string;
+  @Prop({ type: String, enum: MenuItemCategories, required: true })
+  category: MenuItemCategories;
 }
 
-export const MenuSchema = SchemaFactory.createForClass(MenuItem)
+export const MenuSchema = SchemaFactory.createForClass(MenuItem) 

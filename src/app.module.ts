@@ -4,11 +4,11 @@ import { ConfigService } from '@nestjs/config/dist';
 import { MongooseModule } from '@nestjs/mongoose';
 import { RestaurantModule } from './restaurant/restaurant.module';
 import { OrdersModule } from './orders/orders.module';
+import { PaymentServiceService } from './payment-service/payment-service.service';
 
 @Module({
   imports: [
     ConfigModule.forRoot(),
-    RestaurantModule,
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) => ({
@@ -16,9 +16,10 @@ import { OrdersModule } from './orders/orders.module';
       }),
       inject: [ConfigService],
     }),
+    RestaurantModule,
     OrdersModule,
   ],
   controllers: [],
-  providers: [],
+  providers: [PaymentServiceService],
 })
 export class AppModule {}
